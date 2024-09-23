@@ -5,7 +5,7 @@ import { models } from "./src/api/models.ts";
 
 import { auth } from "./src/auth.ts";
 import { limit } from "./src/limit.ts";
-import { cron } from "./src/cron.ts";
+import { scheduleCacheCleanup } from "./src/cron.ts";
 
 const app = new Hono();
 
@@ -15,6 +15,6 @@ limit(app);
 chat(app);
 models(app);
 
-cron();
+scheduleCacheCleanup();
 
 Deno.serve(app.fetch);
